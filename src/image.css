@@ -1,0 +1,7 @@
+.selected{
+  box-shadow: 0 28px 45px rgba(227, 73, 119, 0.7);
+}
+
+.disabled{
+  pointer-events:none;
+}
