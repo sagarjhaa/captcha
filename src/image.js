@@ -17,10 +17,10 @@ class Image extends Component{
   render(){
     var {isSelected} = this.state;
     return (
-      <div className={`${isSelected ? "disabled" :""}` } >
+      <div className={`${isSelected ? "disabled" :""} image` } >
       <img onClick={(e) => this.handleClick(e)} 
       className={`box ${isSelected ? "selected" :""}` } 
-      src={this.props.url} width='150px' height='150px'/>
+      src={this.props.url} alt='pie_image'/>
       </div>
     )
   }

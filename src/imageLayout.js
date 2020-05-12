@@ -3,13 +3,15 @@ import '../src/imageLayout.css';
 import Image from './image';
 import {checkImage} from './services';
 
+const TOTAL_CHANCES = 3;
+const TOTAL_IMAGES = 6;
+
 class ImageLayout extends Component{
   constructor(props){
     super(props);
     this.state = {
       imageUrl:[],
-      chance:3,
-      totalImages:6,
+      chance:TOTAL_CHANCES,
       urls:[]
     }
     this.generateTable = this.generateTable.bind(this);
@@ -54,21 +56,22 @@ class ImageLayout extends Component{
   }
 
   generateTable(){
-    this.setState({imageUrl:[],urls:[]});
-    for(let i=0;i<this.state.totalImages;i++){
-      this.getImages(i);
-    }
+    this.setState({imageUrl:[],urls:[],chance:TOTAL_CHANCES},() => {
+      for(let i=0;i<TOTAL_IMAGES;i++){
+        this.getImages(i);
+      }
+    });
   }
 
   render(){
     return (
       <div>
         <h1>Select a pie</h1>
-        <h3>{this.state.chance} <span className='small'>chance left</span></h3>
-      <div className='wrapper'>
-        {this.state.imageUrl}
-      </div>
-      <button className='btn' onClick={this.generateTable}>Refresh</button>
+        <h3 style={{fontSize:'2em'}}>{this.state.chance} <span className='small'>chance left</span></h3>
+        <div className='wrapper'>
+          {this.state.imageUrl}
+        </div>
+        <button className='btn' onClick={this.generateTable}>Refresh</button>
       </div>
     )
   }
